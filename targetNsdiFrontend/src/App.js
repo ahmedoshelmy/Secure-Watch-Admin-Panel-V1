@@ -140,7 +140,7 @@ function App() {
     const data = await response.json();
     console.log(data);
     // data.then((e: any) => {});
-    this_user_id = data.data.authenticate2;
+    this_user_id = parseInt(data.data.authenticate2);
     console.log(this_user_id);
     if (this_user_id !== -1) {
       setuserinfo({
