@@ -37,6 +37,7 @@ export const typeDefs = gql`
       user_name: String!
       user_password: String!
       user_admin: Boolean!
+      user_activated:Boolean
     ): users
     permanently_delete_users(user_id: Int!): users
     delete_user_access(id:Int):userr_access

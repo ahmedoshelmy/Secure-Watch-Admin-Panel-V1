@@ -19,6 +19,12 @@ export const userInputs = [
     value: "user_admin",
     type: "checkbox",
   },
+  {
+    id: 4,
+    label: "activated",
+    value: "user_activated",
+    type: "checkbox",
+  },
 ];
 
 export const newsInputs = [

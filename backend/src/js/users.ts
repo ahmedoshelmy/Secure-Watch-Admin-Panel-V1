@@ -103,6 +103,7 @@ export const addUser = async (args: any) => {
         user_name: args.user_name,
         user_password: aes.encrypt(sha1(args.user_password)),
         user_admin: args.user_admin,
+        user_activated:args.user_activated
       },
     });
     return result;
