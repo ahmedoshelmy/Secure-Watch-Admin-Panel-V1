@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model userr_access {
+  id             Int      @id @default(autoincrement())
+  user_id        Int?
+  start_date     DateTime @db.Date
+  end_date       DateTime @db.Date
+  admin_approval Boolean?
+  users          users?   @relation(fields: [user_id], references: [user_id], onDelete: Restrict, onUpdate: Restrict, map: "userr_access_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model users {
+  user_id        Int            @id @default(autoincrement())
+  user_name      String?        @unique(map: "user_name") @db.VarChar(50)
+  user_password  String         @db.VarChar(255)
+  user_activated Boolean?
+  user_admin     Boolean?
+  user_email     String?        @db.VarChar(255)
+  userr_access   userr_access[]
+}

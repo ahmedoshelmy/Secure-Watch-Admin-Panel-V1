@@ -1,0 +1,44 @@
+prigenerator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  user_id       Int     @id @unique(map: "user_id") @default(autoincrement()) @db.UnsignedInt
+  user_name     String  @unique(map: "user_name") @db.VarChar(255)
+  user_password String  @db.VarChar(255)
+  user_isadmin  Boolean
+}
+
+model images {
+  seq      Int      @id @default(autoincrement())
+  tilte    String   @db.VarChar(150)
+  subTitle String   @db.VarChar(500)
+  date     DateTime @db.Date
+  url      String   @db.VarChar(150)
+  status   String   @db.VarChar(10)
+}
+
+model news {
+  seq      Int      @id @default(autoincrement())
+  tilte    String   @db.VarChar(150)
+  subTitle String   @db.VarChar(500)
+  date     DateTime @db.Date
+  auth     String   @db.VarChar(150)
+  address  String   @db.VarChar(150)
+  url      String   @db.VarChar(200)
+  status   String   @db.VarChar(10)
+}
+
+model videos {
+  seq      Int      @id @default(autoincrement())
+  tilte    String   @db.VarChar(150)
+  subTitle String   @db.VarChar(500)
+  date     DateTime @db.Date
+  url      String   @db.VarChar(150)
+  status   String   @db.VarChar(10)
+}
