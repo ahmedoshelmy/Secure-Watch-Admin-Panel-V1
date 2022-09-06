@@ -2,9 +2,9 @@ import React from "react";
 
 export async function add_user(user_data) {
   const query = `
-    mutation addUser($user_name: String!, $user_password: String!, $user_isadmin: Boolean!)
+    mutation addUser($user_name: String!, $user_password: String!, $user_admin: Boolean!)
       {
-        addUser(user_name: $user_name, user_password: $user_password, user_isadmin: $user_isadmin)
+        addUser(user_name: $user_name, user_password: $user_password, user_admin: $user_admin)
         {
           user_id
           user_name
@@ -16,9 +16,9 @@ export async function add_user(user_data) {
 }
 export async function edit_user(user_data) {
   const query = `
-    mutation edit_user($user_id:Int, $user_name: String!, $user_password: String!, $user_isadmin: Boolean!)
+    mutation edit_user($user_id:Int, $user_name: String!, $user_password: String!, $user_admin: Boolean!)
       {
-        edit_user(user_id: $user_id,user_name: $user_name, user_password: $user_password, user_isadmin: $user_isadmin)
+        edit_user(user_id: $user_id,user_name: $user_name, user_password: $user_password, user_admin: $user_admin)
         {
           user_id
           user_name

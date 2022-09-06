@@ -16,7 +16,7 @@ export const userInputs = [
   {
     id: 3,
     label: "admin",
-    value: "user_isadmin",
+    value: "user_admin",
     type: "checkbox",
   },
 ];

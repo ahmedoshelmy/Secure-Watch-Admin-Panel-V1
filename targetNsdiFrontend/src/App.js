@@ -19,17 +19,16 @@ function App() {
   const [userinfo, setuserinfo] = useState({
     user_name: "",
     user_isadmin: "",
+    user_id: -1,
   });
-  const [user, setUser] = useState([]);
   function logout() {
-    setuserinfo({ user_name: "", user_isadmin: "" });
+    setuserinfo({ user_name: "", user_isadmin: "", user_id: -1 });
   }
   const [datatable_data, setdatatable_data] = useState([]);
   const [table, settable] = useState("users");
   async function getData(selecttable) {
     settable(selecttable);
     let query = ``;
-    console.log(user);
     if (selecttable === "users") {
       query = `query {
         users{
@@ -56,7 +55,9 @@ function App() {
       query: `
         ${query}
           `,
-      variables: user,
+      variables: {
+        user_id: userinfo.user_id,
+      },
     });
     setdatatable_data({});
 
@@ -68,11 +69,11 @@ function App() {
       body: body,
     });
     const data = await response.json();
-    console.log(data);
+    console.log(data.data.get_all_user_access);
     if (selecttable === "users") {
       setdatatable_data(data.data.users);
     } else if (selecttable === "user_access") {
-      setdatatable_data(data.data.user_access);
+      setdatatable_data(data.data.get_all_user_access);
     } // console.log(data);
   }
   async function authenticate(user, pass) {
@@ -83,7 +84,8 @@ function App() {
           authenticate(user_name: $user_name, user_password: $user_password)
           {
             user_name
-            
+            user_id
+            user_admin
             __typename  
           }
         }
@@ -107,49 +109,12 @@ function App() {
     if (data.data.authenticate.length >= 1) {
       setuserinfo({
         user_name: data.data.authenticate[0].user_name,
+        user_id: data.data.authenticate[0].user_id,
       });
       console.log(data.data.authenticate[0]);
-      setUser(data.data.authenticate[0]);
-      // getData("users");
-    }
-
-    return data;
-  }
-
-  async function authenticate2(user, pass) {
-    let body = JSON.stringify({
-      query: `
-        query authenticate2($user_name: String!, $user_password: String!)
-        {
-          authenticate2(user_name: $user_name, user_password: $user_password)
-          
-        }
-          `,
-      variables: {
-        user_name: user,
-        user_password: pass,
-      },
-    });
-    const response = await fetch("http://localhost:4000/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: body,
-    });
-    const data = await response.json();
-    console.log(data);
-    // data.then((e: any) => {});
-    this_user_id = parseInt(data.data.authenticate2);
-    console.log(this_user_id);
-    if (this_user_id !== -1) {
-      setuserinfo({
-        user_name: user,
-      });
     }
     return data;
   }
-
   function getInputdata(route) {
     if (route === "users") {
       return userInputs;
@@ -245,7 +210,7 @@ function App() {
   }
   return (
     <div>
-      <Login authenticate={authenticate2} />
+      <Login authenticate={authenticate} />
     </div>
   );
 }

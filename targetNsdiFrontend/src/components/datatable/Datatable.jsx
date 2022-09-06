@@ -22,6 +22,7 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
       }
         `;
     } else if (tabledata === "user_access") {
+      console.log(e);
       variables = {
         id: e,
       };
@@ -109,14 +110,14 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
           return (
             <div className="cellAction">
               <Link
-                to={`/user_access/edit/${params.row.id}`}
+                to={`/user_access/edit/${params.row.user_id}`}
                 style={{ textDecoration: "none" }}
               >
                 <div className="viewButton">View</div>
               </Link>
               <div
                 className="deleteButton"
-                onClick={() => deleteElement(params.row.id, "user_access")}
+                onClick={() => deleteElement(params.row.user_id, "user_access")}
               >
                 Delete
               </div>
@@ -136,7 +137,7 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
         <DataGrid
           className="datagrid"
           rows={datatable_data}
-          getRowId={(row) => row.id}
+          getRowId={(row) => row.user_id}
           columns={user_access_Column.concat(actionColumnNews)}
           pageSize={9}
           rowsPerPageOptions={[9]}

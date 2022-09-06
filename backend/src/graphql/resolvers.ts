@@ -30,8 +30,6 @@ export const resolvers = {
     get_specific_user_access(args), 
     authenticate: async (parent: any, args: any, context: any, info: any) =>
       authenticate(args),
-      authenticate2: async (parent: any, args: any, context: any, info: any) =>
-      authenticate2(args),
     check_accessability:async (parent: any, args: any, context: any, info: any) =>
     check_accessability(args),
     get_all_user_access: async (parent: any, args: any, context: any, info: any) =>

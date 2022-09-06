@@ -43,6 +43,7 @@ const New = ({
   const inputs = getInputdata(route);
   async function usersubmitNewForm(e) {
     e.preventDefault();
+    console.log(userdata);
     const data = await add_user(userdata)
     console.log(data)
     // data.then((e: any) => {});
