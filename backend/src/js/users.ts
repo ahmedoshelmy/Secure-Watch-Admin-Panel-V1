@@ -64,11 +64,13 @@ export const getallusers = async () => {
 
 //TODO: Edit delete_users
 export const permanently_delete_users = async (args: any) => {
-  const result1 = await prisma.userr_access.delete({
+
+  const result1 = await prisma.userr_access.deleteMany({
     where: { user_id: args.user_id },
-  });
+  }).catch(e=>{
+    console.log(e);
+  })
   console.log("delete", result1);
-  // delete_user_access({id:args.id})
   const result = await prisma.users.delete({
     where: { user_id: args.user_id },
   });

@@ -7,7 +7,7 @@ import StoreIcon from "@mui/icons-material/Store";
 // import InsertChartIcon from "@mui/icons-material/InsertChart";
 // import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import PublicIcon from '@mui/icons-material/Public';// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 // import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 // import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 // import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -56,6 +56,10 @@ const Sidebar = ({ logout, user_name, getData }) => {
               <span>User_access</span>
             </li>
           </Link>
+          <li >
+            <PublicIcon className="icon" />
+            <a href = "https://securewatch.maxar.com/myDigitalGlobe/login"><span>securewatch</span></a>
+          </li>
           <li onClick={logout}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

@@ -52,6 +52,5 @@ export const resolvers = {
     edit_user_access(args),
     add_user_access:async (parent: any, args: any, context: any, info: any) =>
     add_user_access(args),
-
   },
 };

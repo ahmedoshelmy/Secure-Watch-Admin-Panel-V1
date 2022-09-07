@@ -9,11 +9,12 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
     let query = ``;
     let variables = {};
     if (tabledata === "users") {
+      console.log(e);
       variables = {
         user_id: e,
       };
       query = `
-      mutation deleteusers($user_id: Int!)
+      mutation permanently_delete_users($user_id: Int!)
       {
         permanently_delete_users(user_id: $user_id)
         {
@@ -22,7 +23,6 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
       }
         `;
     } else if (tabledata === "user_access") {
-      console.log(e);
       variables = {
         id: e,
       };
@@ -50,7 +50,6 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
       body: body,
     });
     await response.json();
-    // data.then((e: any) => {});
     getData(tabledata);
   }
   console.log(table);

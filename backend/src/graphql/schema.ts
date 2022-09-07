@@ -21,9 +21,6 @@ export const typeDefs = gql`
     admin_approval: Boolean
     users:          [users]
   }
-  
-
-
   type Query {
     users: [users]
     get_all_user_access(user_id:Int):[userr_access]
