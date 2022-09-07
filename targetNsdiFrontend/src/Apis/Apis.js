@@ -26,6 +26,16 @@ export async function edit_user(user_data) {
         `;
   return execute_query(query, user_data);
 }
+export async function check_accessability(user_data) {
+  const query = `
+    query check_accessability($id:Int)
+      {
+        check_accessability(id: $id)
+      }
+        `;
+  return execute_query(query, user_data);
+}
+
 
 async function execute_query(query, userdata) {
   let body = JSON.stringify({

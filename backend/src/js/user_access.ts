@@ -24,7 +24,7 @@ export const get_all_user_access = async (args:any) => {
       orderBy: {
         user_id: "asc",
       },
-    });
+    })
   }else{
     result = await prisma.userr_access.findMany({
       where:{

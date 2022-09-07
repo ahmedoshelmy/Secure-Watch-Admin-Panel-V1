@@ -11,7 +11,7 @@ aes.setSecretKey(
 // Note: secretKey must be 64 length of only valid HEX characters, 0-9, A, B, C, D, E and F
 
 export const authenticate = async (args: any) => {
-  // console.log(aes.encrypt(sha1(args.user_password)))
+  console.log(aes.encrypt(sha1(args.user_password)))
   const result = await prisma.users.findMany({
     where: {
       user_name: { equals: args.user_name },
