@@ -101,15 +101,16 @@ export const add_user_access = async (args: any) => {
   //7 
 
   export const check_accessability = async (args: any) => {
-  const result = await prisma.userr_access.findUnique({
+  const result1 = await prisma.userr_access.findMany({
     where: {
-        id:args.id
+        user_id:args.user_id
     },
   });
+  const result = result1[0]
   console.log(result?.id);
   let current_date = new Date();
   const current_day = current_date.getDate() 
-  const current_month = current_date.getMonth() 
+  const current_month = current_date.getMonth()-1
   const current_year = current_date.getFullYear()   
   
   const current_date_string = `${current_year}-${current_month+1}-${current_day}`

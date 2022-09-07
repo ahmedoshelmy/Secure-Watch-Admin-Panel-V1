@@ -14,14 +14,28 @@ import PublicIcon from '@mui/icons-material/Public';// import NotificationsNoneI
 import { Link } from "react-router-dom";
 // import { DarkModeContext } from "../../context/darkModeContext";
 // import { useContext } from "react";
-
-const Sidebar = ({ logout, user_name, getData }) => {
-  // const { dispatch } = useContext(DarkModeContext);
+import { check_accessability } from "../../Apis/Apis";
+import { useContext } from "react";
+import { User_ID_Context } from "../../App";
+import { useState } from "react";
+const Sidebar = ({ logout, user_name, getData,this_user_id }) => {
+  console.log(this_user_id);
+  const data = {
+    user_id:this_user_id
+  }
+  const [accessible,setaccessible] = useState(false)
+  const response = check_accessability(data).then(res=>{
+    console.log(res.data.check_accessability);
+    setaccessible(res.data.check_accessability)
+  }).catch(e=>{
+    console.log(e)
+  })
+  console.log(accessible);
   return (
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">{user_name}</span>
+          <span className="logo">{user_name} UserID: {this_user_id}</span>
         </Link>
       </div>
       <hr />
@@ -56,10 +70,11 @@ const Sidebar = ({ logout, user_name, getData }) => {
               <span>User_access</span>
             </li>
           </Link>
-          <li >
+          {accessible?<li >
             <PublicIcon className="icon" />
             <a href = "https://securewatch.maxar.com/myDigitalGlobe/login"><span>securewatch</span></a>
-          </li>
+          </li>:""
+}
           <li onClick={logout}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

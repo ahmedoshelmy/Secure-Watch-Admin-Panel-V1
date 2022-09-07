@@ -3,11 +3,12 @@ import Navbar from "../../components/navbar/Navbar";
 import "./home.scss";
 // import Table from "../../components/table/Table";
 
-const Home = ({ logout, user_name, getData, datatable_data }) => {
+const Home = ({ logout, user_name, getData, datatable_data,this_user_id }) => {
   console.log(datatable_data);
+  console.log(user_name,this_user_id);
   return (
     <div className="home">
-      <Sidebar user_name={user_name} getData={getData} logout={logout} />
+      <Sidebar user_name={user_name} getData={getData} logout={logout} this_user_id={this_user_id}  />
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">

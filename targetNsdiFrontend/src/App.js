@@ -13,7 +13,6 @@ import { DarkModeContext } from "./context/darkModeContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Edit from "./pages/Edit/Edit";
 export const User_ID_Context = React.createContext();
-let this_user_id;
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const [userinfo, setuserinfo] = useState({
@@ -111,7 +110,6 @@ function App() {
         user_name: data.data.authenticate[0].user_name,
         user_id: data.data.authenticate[0].user_id,
       });
-      console.log(data.data.authenticate[0]);
     }
     return data;
   }
@@ -126,7 +124,6 @@ function App() {
     return (
       <div className={darkMode ? "app dark" : "app"}>
         <BrowserRouter>
-          <User_ID_Context.Provider value={this_user_id}>
             <Routes>
               <Route path="/">
                 <Route
@@ -138,6 +135,7 @@ function App() {
                       getData={getData}
                       user_name={userinfo.user_name}
                       logout={logout}
+                      this_user_id={userinfo.user_id}
                     />
                   }
                 />
@@ -166,6 +164,7 @@ function App() {
                       element={
                         <List
                           table={table}
+                          this_user_id={userinfo.user_id}
                           getData={getData}
                           userinfo={userinfo}
                           logout={logout}
@@ -203,7 +202,6 @@ function App() {
                 ))}
               </Route>
             </Routes>
-          </User_ID_Context.Provider>
         </BrowserRouter>
       </div>
     );

@@ -11,6 +11,7 @@ const List = (props) => {
         getData={props.getData}
         user_name={props.userinfo.user_name}
         logout={props.logout}
+        this_user_id={props.this_user_id}
       />
       <div className="listContainer">
         <Navbar />
