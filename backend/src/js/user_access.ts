@@ -101,11 +101,14 @@ export const add_user_access = async (args: any) => {
   //7 
 
   export const check_accessability = async (args: any) => {
+    console.log(args.user_id)
   const result1 = await prisma.userr_access.findMany({
     where: {
-        user_id:args.user_id
+        user_id:{ equals: ( args.user_id )}
     },
   });
+  console.log(result1);
+  if(result1.length===0) return false
   const result = result1[0]
   console.log(result?.id);
   let current_date = new Date();

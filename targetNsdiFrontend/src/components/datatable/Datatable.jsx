@@ -90,7 +90,7 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
         <DataGrid
           className="datagrid"
           rows={datatable_data}
-          getRowId={(row) => row.user_id}
+          getRowId={(row) => row.id}
           columns={userColumns.concat(actionColumn)}
           pageSize={9}
           rowsPerPageOptions={[9]}
@@ -106,17 +106,18 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
         headerName: "Action",
         width: 200,
         renderCell: (params) => {
+          console.log(params);
           return (
             <div className="cellAction">
               <Link
-                to={`/user_access/edit/${params.row.user_id}`}
+                to={`/user_access/edit/${params.row.id}`}
                 style={{ textDecoration: "none" }}
               >
                 <div className="viewButton">View</div>
               </Link>
               <div
                 className="deleteButton"
-                onClick={() => deleteElement(params.row.user_id, "user_access")}
+                onClick={() => deleteElement(params.row.id, "user_access")}
               >
                 Delete
               </div>
@@ -136,7 +137,7 @@ const Datatable = ({ datatable_data, setdatatable_data, table, getData }) => {
         <DataGrid
           className="datagrid"
           rows={datatable_data}
-          getRowId={(row) => row.user_id}
+          getRowId={(row) => row.id}
           columns={user_access_Column.concat(actionColumnNews)}
           pageSize={9}
           rowsPerPageOptions={[9]}

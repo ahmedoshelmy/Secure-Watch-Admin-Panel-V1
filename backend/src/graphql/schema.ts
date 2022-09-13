@@ -27,7 +27,7 @@ export const typeDefs = gql`
     getspecificuser(user_id: Int!):users
     get_specific_user_access(id:Int):userr_access
     authenticate(user_name: String!, user_password: String!): [users]
-    check_accessability(id:Int):Boolean
+    check_accessability(user_id:Int):Boolean
   }
   type Mutation {
     addUser(

@@ -1,5 +1,5 @@
 export const user_access_Column = [
-  { field: "id", headerName: "ID", width: 114 },
+  { field: "id", headerName: "id", width: 114 },
 
   {
     field: "user_id",

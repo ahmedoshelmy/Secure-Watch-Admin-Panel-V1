@@ -26,11 +26,24 @@ export async function edit_user(user_data) {
         `;
   return execute_query(query, user_data);
 }
+export async function edit_user_access(user_data) {
+  const query = `
+    mutation edit_user_access($start_date:String, $end_date: String, $user_id: Int, $id: Int)
+      {
+        edit_user_access(start_date: $start_date,end_date: $end_date, user_id: $user_id, id: $id ){
+          start_date
+          end_date
+          user_id
+        }
+      }
+        `;
+  return execute_query(query, user_data);
+}
 export async function check_accessability(user_data) {
   const query = `
-    query check_accessability($id:Int)
+    query check_accessability($user_id:Int)
       {
-        check_accessability(id: $id)
+        check_accessability(user_id: $user_id)
       }
         `;
   return execute_query(query, user_data);

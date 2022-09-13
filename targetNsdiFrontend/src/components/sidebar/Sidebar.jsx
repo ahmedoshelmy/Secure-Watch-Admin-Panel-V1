@@ -21,7 +21,7 @@ import { useState } from "react";
 const Sidebar = ({ logout, user_name, getData,this_user_id }) => {
   console.log(this_user_id);
   const data = {
-    user_id:this_user_id
+    user_id:parseInt(this_user_id)
   }
   const [accessible,setaccessible] = useState(false)
   const response = check_accessability(data).then(res=>{

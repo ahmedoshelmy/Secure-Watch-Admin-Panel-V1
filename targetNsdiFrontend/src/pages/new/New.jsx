@@ -41,6 +41,7 @@ const New = ({
   };
 
   const inputs = getInputdata(route);
+  console.log(inputs);
   async function usersubmitNewForm(e) {
     e.preventDefault();
     console.log(userdata);

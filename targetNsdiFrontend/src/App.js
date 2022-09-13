@@ -5,7 +5,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
-import { userInputs, newsInputs } from "./formSource";
+import { userInputs, user_accessInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import React from "react";
@@ -43,6 +43,7 @@ function App() {
         get_all_user_access(user_id: $user_id)
         {
           user_id
+          id
           start_date
           end_date
         }
@@ -117,7 +118,7 @@ function App() {
     if (route === "users") {
       return userInputs;
     } else if (route === "user_access") {
-      return newsInputs;
+      return user_accessInputs;
     }
   }
   if (userinfo.user_name !== "") {
